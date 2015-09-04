@@ -1,0 +1,1899 @@
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/social-login-in-rails/app/models/user.rb:8)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/social-login-in-rails/app/models/user.rb:8)
+  [1m[36m (129.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (42.8ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20130714124350)
+  [1m[35m (0.3ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /var/www/social-login-in-rails/db/migrate/20130714124350_create_users.rb:7)
+  [1m[36m (102.7ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "about" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130714124350"]]
+  [1m[36m (58.7ms)[0m  [1mCOMMIT[0m
+Migrating to AddDeviseToUsers (20130714124402)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (87.7ms)[0m  [1mALTER TABLE "users" ADD "email" character varying DEFAULT ''[0m
+  [1m[35m (55.0ms)[0m  ALTER TABLE "users" ADD "encrypted_password" character varying DEFAULT '' NOT NULL
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "users" ADD "reset_password_token" character varying[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "users" ADD "reset_password_sent_at" timestamp
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "users" ADD "remember_created_at" timestamp[0m
+  [1m[35m (71.6ms)[0m  ALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "users" ADD "current_sign_in_at" timestamp[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "users" ADD "last_sign_in_at" timestamp
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "users" ADD "current_sign_in_ip" character varying[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "users" ADD "last_sign_in_ip" character varying
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "users" ADD "confirmation_token" character varying[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "users" ADD "confirmed_at" timestamp
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "users" ADD "confirmation_sent_at" timestamp[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "users" ADD "unconfirmed_email" character varying
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "users" ADD "authentication_token" character varying[0m
+  [1m[35m (27.7ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")
+  [1m[36m (29.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (29.3ms)[0m  CREATE UNIQUE INDEX  "index_users_on_confirmation_token" ON "users"  ("confirmation_token")
+  [1m[36m (30.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_authentication_token" ON "users"  ("authentication_token")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130714124402"]]
+  [1m[36m (46.8ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAuthorizations (20130714145508)
+  [1m[35m (0.6ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /var/www/social-login-in-rails/db/migrate/20130714145508_create_authorizations.rb:10)
+  [1m[36m (88.4ms)[0m  [1mCREATE TABLE "authorizations" ("id" serial primary key, "provider" character varying, "uid" character varying, "user_id" integer, "token" character varying, "secret" character varying, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130714145508"]]
+  [1m[36m (15.9ms)[0m  [1mCOMMIT[0m
+Migrating to AddImageToUser (20130714201233)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "users" ADD "image" character varying[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130714201233"]]
+  [1m[36m (14.3ms)[0m  [1mCOMMIT[0m
+Migrating to AddUsernameToAuthorization (20130714204601)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "authorizations" ADD "username" character varying[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130714204601"]]
+  [1m[36m (12.8ms)[0m  [1mCOMMIT[0m
+Migrating to AddLocationToUsers (20130714210222)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "users" ADD "location" character varying[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130714210222"]]
+  [1m[36m (14.1ms)[0m  [1mCOMMIT[0m
+Migrating to AddUsernameToUsers (20130714212638)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "users" ADD "username" character varying[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130714212638"]]
+  [1m[36m (12.6ms)[0m  [1mCOMMIT[0m
+Migrating to DeviseCreateAdminUsers (20131108204716)
+  [1m[35m (0.4ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /var/www/social-login-in-rails/db/migrate/20131108204716_devise_create_admin_users.rb:43)
+  [1m[36m (108.7ms)[0m  [1mCREATE TABLE "admin_users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (29.3ms)[0m  CREATE UNIQUE INDEX  "index_admin_users_on_email" ON "admin_users"  ("email")
+  [1m[36m (28.7ms)[0m  [1mCREATE UNIQUE INDEX  "index_admin_users_on_reset_password_token" ON "admin_users"  ("reset_password_token")[0m
+  [1m[35mAdminUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "admin_users" WHERE "admin_users"."email" = 'admin@cbs.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "admin_users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "admin@cbs.com"], ["encrypted_password", "$2a$10$860zFr1tC03iSNWW.PGYiugsrGwNyBlJX8Ln4FEA0pFVYwqAXwrrq"], ["created_at", "2015-08-27 10:18:38.355846"], ["updated_at", "2015-08-27 10:18:38.355846"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20131108204716"]]
+  [1m[36m (9.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAdminNotes (20131108204722)
+  [1m[35m (0.1ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in up at /var/www/social-login-in-rails/db/migrate/20131108204722_create_admin_notes.rb:8)
+  [1m[36m (62.6ms)[0m  [1mCREATE TABLE "admin_notes" ("id" serial primary key, "resource_id" character varying NOT NULL, "resource_type" character varying NOT NULL, "admin_user_id" integer, "admin_user_type" character varying, "body" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (29.4ms)[0m  CREATE  INDEX  "index_admin_notes_on_resource_type_and_resource_id" ON "admin_notes"  ("resource_type", "resource_id")
+  [1m[36m (24.3ms)[0m  [1mCREATE  INDEX  "index_admin_notes_on_admin_user_type_and_admin_user_id" ON "admin_notes"  ("admin_user_type", "admin_user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20131108204722"]]
+  [1m[36m (12.2ms)[0m  [1mCOMMIT[0m
+Migrating to MoveAdminNotesToComments (20131108204723)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (7.0ms)[0m  [1mDROP INDEX "index_admin_notes_on_admin_user_type_and_admin_user_id"[0m
+  [1m[35m (5.1ms)[0m  ALTER TABLE "admin_notes" RENAME TO "active_admin_comments"
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "public"."admin_notes_id_seq" RENAME TO "active_admin_comments_id_seq"[0m
+  [1m[35m (0.2ms)[0m  ALTER INDEX "admin_notes_pkey" RENAME TO "active_admin_comments_pkey"
+  [1m[36m (0.2ms)[0m  [1mALTER INDEX "index_admin_notes_on_resource_type_and_resource_id" RENAME TO "index_active_admin_comments_on_resource_type_and_resource_id"[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "active_admin_comments" RENAME COLUMN "admin_user_type" TO "author_type"
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "active_admin_comments" RENAME COLUMN "admin_user_id" TO "author_id"[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "active_admin_comments" ADD "namespace" character varying
+  [1m[36m (28.9ms)[0m  [1mCREATE  INDEX  "index_active_admin_comments_on_namespace" ON "active_admin_comments"  ("namespace")[0m
+  [1m[35m (24.3ms)[0m  CREATE  INDEX  "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments"  ("author_type", "author_id")
+  [1m[36m (0.3ms)[0m  [1mUPDATE active_admin_comments SET namespace='admin'[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20131108204723"]]
+  [1m[36m (11.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (3.3ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'active_admin_comments'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.1ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'admin_users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'authorizations'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (4.4ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/social-login-in-rails/app/models/user.rb:8)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/social-login-in-rails/app/models/user.rb:8)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 15:52:04 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 4713ms (Views: 4701.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-08-27 15:52:23 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/gems/devise-3.5.1/app/views/devise/shared/_links.html.erb (3.8ms)
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/gems/devise-3.5.1/app/views/devise/sessions/new.html.erb within layouts/application (18.1ms)
+Completed 200 OK in 149ms (Views: 129.4ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 15:52:27 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 91ms (Views: 90.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/" for 127.0.0.1 at 2015-08-27 15:52:31 +0530
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2015-08-27 15:52:31 +0530
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/devise/shared/_links.erb (1.2ms)
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (129.0ms)
+Completed 200 OK in 324ms (Views: 317.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/admin/login" for 127.0.0.1 at 2015-08-27 15:52:50 +0530
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YnFTBInOUDsABB726QftCY0e0zMUcg4uFsCaNpYmgjSvhgylsSkaY6CIgaFfs3QYfcr3isxKXmhygjw7Nw9t/A==", "admin_user"=>{"email"=>"admin@cbs.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["email", "admin@cbs.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "admin_users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "admin_users"."id" = $7  [["last_sign_in_at", "2015-08-27 10:22:50.847593"], ["current_sign_in_at", "2015-08-27 10:22:50.847593"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-08-27 10:22:50.848640"], ["id", 1]]
+  [1m[36m (12.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 82ms (ActiveRecord: 12.7ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-08-27 15:52:50 +0530
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/page/index.html.arb (65.8ms)
+Completed 200 OK in 70ms (Views: 66.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-08-27 15:52:55 +0530
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/page/index.html.arb (63.6ms)
+Completed 200 OK in 66ms (Views: 64.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2015-08-27 15:52:56 +0530
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (25.3ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "admin_users"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mAdminUser Load (0.9ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users"  ORDER BY "admin_users"."id" desc LIMIT 30 OFFSET 0[0m
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (138.3ms)
+Completed 500 Internal Server Error in 143ms (ActiveRecord: 26.6ms)
+** [Airbrake] Notice was not sent due to configuration:         
+  Environment Monitored? false         
+  API key set? false
+
+RuntimeError - `default_actions` is no longer provided in ActiveAdmin 1.x. Use `actions` instead.:
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/index_as_table.rb:260:in `default_actions'
+  arbre (1.0.3) lib/arbre/element.rb:176:in `method_missing'
+  app/admin/admin_user.rb:9:in `block (2 levels) in <top (required)>'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/index_as_table.rb:210:in `instance_exec'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/index_as_table.rb:210:in `block in build'
+  arbre (1.0.3) lib/arbre/element.rb:32:in `call'
+  arbre (1.0.3) lib/arbre/element.rb:32:in `build'
+  arbre (1.0.3) lib/arbre/html/tag.rb:19:in `build'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/components/table_for.rb:20:in `build'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:28:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/index_as_table.rb:215:in `table_for'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/index_as_table.rb:208:in `build'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:30:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:139:in `block (2 levels) in render_index'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:138:in `block in render_index'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `paginated_collection'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:132:in `render_index'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:50:in `build_collection'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:28:in `block in main_content'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `batch_action_form'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:36:in `wrap_with_batch_action_form'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:26:in `main_content'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:91:in `block (2 levels) in build_main_content_wrapper'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:90:in `block in build_main_content_wrapper'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:89:in `build_main_content_wrapper'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:75:in `block in build_page_content'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:74:in `build_page_content'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:52:in `block (2 levels) in build_page'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:48:in `block in build_page'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:47:in `build_page'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:10:in `build'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:30:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb:2:in `block in __home_ourdesignz__rvm_gems_ruby_______bundler_gems_active_admin__a_b_b_bc____app_views_active_admin_resource_index_html_arb___1722356187469983517_79215240'
+  arbre (1.0.3) lib/arbre/context.rb:45:in `instance_eval'
+  arbre (1.0.3) lib/arbre/context.rb:45:in `initialize'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb:1:in `new'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb:1:in `__home_ourdesignz__rvm_gems_ruby_______bundler_gems_active_admin__a_b_b_bc____app_views_active_admin_resource_index_html_arb___1722356187469983517_79215240'
+  actionview (4.2.3) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.3) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.3) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.3) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.3) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.3) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.3) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.3) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.3) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.3) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.3) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.3) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.3) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.3) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.3) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.3) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.3) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/ourdesignz/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/benchmark.rb:303:in `realtime'
+  activesupport (4.2.3) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.3) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.3) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  responders (2.1.0) lib/action_controller/responder.rb:236:in `default_render'
+  responders (2.1.0) lib/action_controller/responder.rb:170:in `to_html'
+  responders (2.1.0) lib/responders/flash_responder.rb:107:in `to_html'
+  responders (2.1.0) lib/action_controller/responder.rb:163:in `respond'
+  responders (2.1.0) lib/action_controller/responder.rb:156:in `call'
+  responders (2.1.0) lib/action_controller/respond_with.rb:203:in `respond_with'
+  inherited_resources (1.6.0) lib/inherited_resources/actions.rb:7:in `index'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/resource_controller/streaming.rb:12:in `index'
+  actionpack (4.2.3) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.3) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.3) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:115:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:115:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:553:in `block (2 levels) in compile'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:503:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:503:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:88:in `run_callbacks'
+  actionpack (4.2.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.3) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.3) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.3) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.3) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.3) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.3) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.3) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.3) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.3) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:84:in `run_callbacks'
+  actionpack (4.2.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  airbrake (4.3.0) lib/airbrake/rails/middleware.rb:13:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  airbrake (4.3.0) lib/airbrake/user_informer.rb:16:in `_call'
+  airbrake (4.3.0) lib/airbrake/user_informer.rb:12:in `call'
+  railties (4.2.3) lib/rails/engine.rb:518:in `call'
+  railties (4.2.3) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  thin (1.6.3) lib/thin/connection.rb:86:in `block in pre_process'
+  thin (1.6.3) lib/thin/connection.rb:84:in `catch'
+  thin (1.6.3) lib/thin/connection.rb:84:in `pre_process'
+  thin (1.6.3) lib/thin/connection.rb:53:in `process'
+  thin (1.6.3) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.7) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.7) lib/eventmachine.rb:187:in `run'
+  thin (1.6.3) lib/thin/backends/base.rb:73:in `start'
+  thin (1.6.3) lib/thin/server.rb:162:in `start'
+  rack (1.6.4) lib/rack/handler/thin.rb:19:in `run'
+  rack (1.6.4) lib/rack/server.rb:286:in `start'
+  railties (4.2.3) lib/rails/commands/server.rb:80:in `start'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:80:in `block in server'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:75:in `tap'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:75:in `server'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+  railties (4.2.3) lib/rails/commands.rb:17:in `<top (required)>'
+  bin/rails:4:in `require'
+  bin/rails:4:in `<main>'
+
+
+
+Started POST "/__better_errors/2d203003e8d4d836/variables" for 127.0.0.1 at 2015-08-27 15:52:57 +0530
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT "admin_users".* FROM "admin_users"  ORDER BY "admin_users"."id" desc
+
+
+Started GET "/admin/comments" for 127.0.0.1 at 2015-08-27 15:53:10 +0530
+Processing by Admin::CommentsController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1  [["namespace", "admin"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1 LIMIT 30 OFFSET 0) subquery_for_count[0m  [["namespace", "admin"]]
+  [1m[35m (0.4ms)[0m  SELECT DISTINCT "active_admin_comments"."resource_type" FROM "active_admin_comments"  ORDER BY resource_type asc
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT "active_admin_comments"."author_type" FROM "active_admin_comments"  ORDER BY author_type asc[0m
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (114.0ms)
+Completed 200 OK in 119ms (Views: 114.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2015-08-27 15:53:11 +0530
+Processing by Admin::UsersController#index as HTML
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mAuthorization Load (0.3ms)[0m  SELECT "authorizations".* FROM "authorizations"
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (111.9ms)
+Completed 200 OK in 116ms (Views: 112.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2015-08-27 15:53:12 +0530
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "admin_users"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users"  ORDER BY "admin_users"."id" desc LIMIT 30 OFFSET 0
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (76.3ms)
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 0.9ms)
+** [Airbrake] Notice was not sent due to configuration:         
+  Environment Monitored? false         
+  API key set? false
+
+RuntimeError - `default_actions` is no longer provided in ActiveAdmin 1.x. Use `actions` instead.:
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/index_as_table.rb:260:in `default_actions'
+  arbre (1.0.3) lib/arbre/element.rb:176:in `method_missing'
+  app/admin/admin_user.rb:9:in `block (2 levels) in <top (required)>'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/index_as_table.rb:210:in `instance_exec'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/index_as_table.rb:210:in `block in build'
+  arbre (1.0.3) lib/arbre/element.rb:32:in `call'
+  arbre (1.0.3) lib/arbre/element.rb:32:in `build'
+  arbre (1.0.3) lib/arbre/html/tag.rb:19:in `build'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/components/table_for.rb:20:in `build'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:28:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/index_as_table.rb:215:in `table_for'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/index_as_table.rb:208:in `build'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:30:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:139:in `block (2 levels) in render_index'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:138:in `block in render_index'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `paginated_collection'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:132:in `render_index'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:50:in `build_collection'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:28:in `block in main_content'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `batch_action_form'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:36:in `wrap_with_batch_action_form'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:26:in `main_content'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:91:in `block (2 levels) in build_main_content_wrapper'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:90:in `block in build_main_content_wrapper'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:89:in `build_main_content_wrapper'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:75:in `block in build_page_content'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:74:in `build_page_content'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:52:in `block (2 levels) in build_page'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:48:in `block in build_page'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:47:in `build_page'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:10:in `build'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:30:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb:2:in `block in __home_ourdesignz__rvm_gems_ruby_______bundler_gems_active_admin__a_b_b_bc____app_views_active_admin_resource_index_html_arb___1722356187469983517_79215240'
+  arbre (1.0.3) lib/arbre/context.rb:45:in `instance_eval'
+  arbre (1.0.3) lib/arbre/context.rb:45:in `initialize'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb:1:in `new'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb:1:in `__home_ourdesignz__rvm_gems_ruby_______bundler_gems_active_admin__a_b_b_bc____app_views_active_admin_resource_index_html_arb___1722356187469983517_79215240'
+  actionview (4.2.3) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.3) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.3) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.3) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.3) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.3) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.3) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.3) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.3) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.3) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.3) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.3) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.3) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.3) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.3) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.3) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.3) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/ourdesignz/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/benchmark.rb:303:in `realtime'
+  activesupport (4.2.3) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.3) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.3) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  responders (2.1.0) lib/action_controller/responder.rb:236:in `default_render'
+  responders (2.1.0) lib/action_controller/responder.rb:170:in `to_html'
+  responders (2.1.0) lib/responders/flash_responder.rb:107:in `to_html'
+  responders (2.1.0) lib/action_controller/responder.rb:163:in `respond'
+  responders (2.1.0) lib/action_controller/responder.rb:156:in `call'
+  responders (2.1.0) lib/action_controller/respond_with.rb:203:in `respond_with'
+  inherited_resources (1.6.0) lib/inherited_resources/actions.rb:7:in `index'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/resource_controller/streaming.rb:12:in `index'
+  actionpack (4.2.3) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.3) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.3) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:115:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:115:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:553:in `block (2 levels) in compile'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:503:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:503:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:88:in `run_callbacks'
+  actionpack (4.2.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.3) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.3) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.3) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.3) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.3) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.3) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.3) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.3) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.3) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:84:in `run_callbacks'
+  actionpack (4.2.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  airbrake (4.3.0) lib/airbrake/rails/middleware.rb:13:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  airbrake (4.3.0) lib/airbrake/user_informer.rb:16:in `_call'
+  airbrake (4.3.0) lib/airbrake/user_informer.rb:12:in `call'
+  railties (4.2.3) lib/rails/engine.rb:518:in `call'
+  railties (4.2.3) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  thin (1.6.3) lib/thin/connection.rb:86:in `block in pre_process'
+  thin (1.6.3) lib/thin/connection.rb:84:in `catch'
+  thin (1.6.3) lib/thin/connection.rb:84:in `pre_process'
+  thin (1.6.3) lib/thin/connection.rb:53:in `process'
+  thin (1.6.3) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.7) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.7) lib/eventmachine.rb:187:in `run'
+  thin (1.6.3) lib/thin/backends/base.rb:73:in `start'
+  thin (1.6.3) lib/thin/server.rb:162:in `start'
+  rack (1.6.4) lib/rack/handler/thin.rb:19:in `run'
+  rack (1.6.4) lib/rack/server.rb:286:in `start'
+  railties (4.2.3) lib/rails/commands/server.rb:80:in `start'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:80:in `block in server'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:75:in `tap'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:75:in `server'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+  railties (4.2.3) lib/rails/commands.rb:17:in `<top (required)>'
+  bin/rails:4:in `require'
+  bin/rails:4:in `<main>'
+
+
+
+Started POST "/__better_errors/cacd7342e3d7f008/variables" for 127.0.0.1 at 2015-08-27 15:53:12 +0530
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT "admin_users".* FROM "admin_users"  ORDER BY "admin_users"."id" desc[0m
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2015-08-27 15:53:28 +0530
+Processing by Admin::UsersController#index as HTML
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mAuthorization Load (0.2ms)[0m  SELECT "authorizations".* FROM "authorizations"
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (111.2ms)
+Completed 200 OK in 116ms (Views: 112.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2015-08-27 15:53:39 +0530
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (0.6ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "admin_users"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users"  ORDER BY "admin_users"."id" desc LIMIT 30 OFFSET 0
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (74.8ms)
+Completed 500 Internal Server Error in 88ms (ActiveRecord: 1.3ms)
+** [Airbrake] Notice was not sent due to configuration:         
+  Environment Monitored? false         
+  API key set? false
+
+RuntimeError - `default_actions` is no longer provided in ActiveAdmin 1.x. Use `actions` instead.:
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/index_as_table.rb:260:in `default_actions'
+  arbre (1.0.3) lib/arbre/element.rb:176:in `method_missing'
+  app/admin/admin_user.rb:9:in `block (2 levels) in <top (required)>'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/index_as_table.rb:210:in `instance_exec'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/index_as_table.rb:210:in `block in build'
+  arbre (1.0.3) lib/arbre/element.rb:32:in `call'
+  arbre (1.0.3) lib/arbre/element.rb:32:in `build'
+  arbre (1.0.3) lib/arbre/html/tag.rb:19:in `build'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/components/table_for.rb:20:in `build'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:28:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/index_as_table.rb:215:in `table_for'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/index_as_table.rb:208:in `build'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:30:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:139:in `block (2 levels) in render_index'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:138:in `block in render_index'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `paginated_collection'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:132:in `render_index'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:50:in `build_collection'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:28:in `block in main_content'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `batch_action_form'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:36:in `wrap_with_batch_action_form'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/index.rb:26:in `main_content'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:91:in `block (2 levels) in build_main_content_wrapper'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:90:in `block in build_main_content_wrapper'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:89:in `build_main_content_wrapper'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:75:in `block in build_page_content'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:74:in `build_page_content'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:52:in `block (2 levels) in build_page'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:31:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:14:in `div'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:48:in `block in build_page'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:49:in `with_current_arbre_element'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:47:in `build_page'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/views/pages/base.rb:10:in `build'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:30:in `block in build_tag'
+  arbre (1.0.3) lib/arbre/context.rb:92:in `with_current_arbre_element'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:26:in `build_tag'
+  arbre (1.0.3) lib/arbre/element/builder_methods.rb:39:in `insert_tag'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb:2:in `block in __home_ourdesignz__rvm_gems_ruby_______bundler_gems_active_admin__a_b_b_bc____app_views_active_admin_resource_index_html_arb___1722356187469983517_79215240'
+  arbre (1.0.3) lib/arbre/context.rb:45:in `instance_eval'
+  arbre (1.0.3) lib/arbre/context.rb:45:in `initialize'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb:1:in `new'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb:1:in `__home_ourdesignz__rvm_gems_ruby_______bundler_gems_active_admin__a_b_b_bc____app_views_active_admin_resource_index_html_arb___1722356187469983517_79215240'
+  actionview (4.2.3) lib/action_view/template.rb:145:in `block in render'
+  activesupport (4.2.3) lib/active_support/notifications.rb:166:in `instrument'
+  actionview (4.2.3) lib/action_view/template.rb:333:in `instrument'
+  actionview (4.2.3) lib/action_view/template.rb:143:in `render'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+  actionview (4.2.3) lib/action_view/renderer/abstract_renderer.rb:39:in `block in instrument'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.3) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `instrument'
+  actionview (4.2.3) lib/action_view/renderer/abstract_renderer.rb:39:in `instrument'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+  actionview (4.2.3) lib/action_view/renderer/template_renderer.rb:14:in `render'
+  actionview (4.2.3) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.3) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.3) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.3) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.3) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.3) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.3) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.3) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.3) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.3) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/ourdesignz/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/benchmark.rb:303:in `realtime'
+  activesupport (4.2.3) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.3) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.3) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  responders (2.1.0) lib/action_controller/responder.rb:236:in `default_render'
+  responders (2.1.0) lib/action_controller/responder.rb:170:in `to_html'
+  responders (2.1.0) lib/responders/flash_responder.rb:107:in `to_html'
+  responders (2.1.0) lib/action_controller/responder.rb:163:in `respond'
+  responders (2.1.0) lib/action_controller/responder.rb:156:in `call'
+  responders (2.1.0) lib/action_controller/respond_with.rb:203:in `respond_with'
+  inherited_resources (1.6.0) lib/inherited_resources/actions.rb:7:in `index'
+   () home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/lib/active_admin/resource_controller/streaming.rb:12:in `index'
+  actionpack (4.2.3) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.3) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.3) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:115:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:115:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:553:in `block (2 levels) in compile'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:503:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:503:in `call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:88:in `run_callbacks'
+  actionpack (4.2.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.3) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.3) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.3) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.3) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.3) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.3) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.3) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.3) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.3) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.3) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.3) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.3) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.3) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:84:in `run_callbacks'
+  actionpack (4.2.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  airbrake (4.3.0) lib/airbrake/rails/middleware.rb:13:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  airbrake (4.3.0) lib/airbrake/user_informer.rb:16:in `_call'
+  airbrake (4.3.0) lib/airbrake/user_informer.rb:12:in `call'
+  railties (4.2.3) lib/rails/engine.rb:518:in `call'
+  railties (4.2.3) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  thin (1.6.3) lib/thin/connection.rb:86:in `block in pre_process'
+  thin (1.6.3) lib/thin/connection.rb:84:in `catch'
+  thin (1.6.3) lib/thin/connection.rb:84:in `pre_process'
+  thin (1.6.3) lib/thin/connection.rb:53:in `process'
+  thin (1.6.3) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.7) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.7) lib/eventmachine.rb:187:in `run'
+  thin (1.6.3) lib/thin/backends/base.rb:73:in `start'
+  thin (1.6.3) lib/thin/server.rb:162:in `start'
+  rack (1.6.4) lib/rack/handler/thin.rb:19:in `run'
+  rack (1.6.4) lib/rack/server.rb:286:in `start'
+  railties (4.2.3) lib/rails/commands/server.rb:80:in `start'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:80:in `block in server'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:75:in `tap'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:75:in `server'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+  railties (4.2.3) lib/rails/commands.rb:17:in `<top (required)>'
+  bin/rails:4:in `require'
+  bin/rails:4:in `<main>'
+
+
+
+Started POST "/__better_errors/d21e3561abd1d636/variables" for 127.0.0.1 at 2015-08-27 15:53:39 +0530
+  [1m[36mAdminUser Load (0.3ms)[0m  [1mSELECT "admin_users".* FROM "admin_users"  ORDER BY "admin_users"."id" desc[0m
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2015-08-27 15:53:59 +0530
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/social-login-in-rails/app/models/user.rb:8)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/social-login-in-rails/app/models/user.rb:8)
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[35mAdminUser Load (0.1ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "admin_users"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users"  ORDER BY "admin_users"."id" desc LIMIT 30 OFFSET 0[0m
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (75.0ms)
+Completed 200 OK in 95ms (Views: 76.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/admin/comments" for 127.0.0.1 at 2015-08-27 15:54:04 +0530
+Processing by Admin::CommentsController#index as HTML
+  [1m[35mAdminUser Load (0.1ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1[0m  [["namespace", "admin"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1 LIMIT 30 OFFSET 0) subquery_for_count  [["namespace", "admin"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT DISTINCT "active_admin_comments"."resource_type" FROM "active_admin_comments"  ORDER BY resource_type asc[0m
+  [1m[35m (0.2ms)[0m  SELECT DISTINCT "active_admin_comments"."author_type" FROM "active_admin_comments"  ORDER BY author_type asc
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (84.7ms)
+Completed 200 OK in 89ms (Views: 85.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-08-27 15:54:05 +0530
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/page/index.html.arb (62.9ms)
+Completed 200 OK in 66ms (Views: 63.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2015-08-27 15:54:06 +0530
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[35mAdminUser Load (0.7ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "admin_users"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users"  ORDER BY "admin_users"."id" desc LIMIT 30 OFFSET 0[0m
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (73.9ms)
+Completed 200 OK in 84ms (Views: 75.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/admin/comments" for 127.0.0.1 at 2015-08-27 15:54:08 +0530
+Processing by Admin::CommentsController#index as HTML
+  [1m[35mAdminUser Load (0.1ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1[0m  [["namespace", "admin"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1 LIMIT 30 OFFSET 0) subquery_for_count  [["namespace", "admin"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT "active_admin_comments"."resource_type" FROM "active_admin_comments"  ORDER BY resource_type asc[0m
+  [1m[35m (0.2ms)[0m  SELECT DISTINCT "active_admin_comments"."author_type" FROM "active_admin_comments"  ORDER BY author_type asc
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (79.2ms)
+Completed 200 OK in 83ms (Views: 80.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2015-08-27 15:54:08 +0530
+Processing by Admin::UsersController#index as HTML
+  [1m[36mAdminUser Load (0.3ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mAuthorization Load (0.2ms)[0m  [1mSELECT "authorizations".* FROM "authorizations"[0m
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (119.6ms)
+Completed 200 OK in 129ms (Views: 121.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/admin/users/new" for 127.0.0.1 at 2015-08-27 15:54:11 +0530
+Processing by Admin::UsersController#new as HTML
+  [1m[35mAdminUser Load (0.1ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/new.html.arb (141.6ms)
+Completed 200 OK in 152ms (Views: 143.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-08-27 15:54:19 +0530
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/page/index.html.arb (74.2ms)
+Completed 200 OK in 77ms (Views: 75.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admin/logout" for 127.0.0.1 at 2015-08-27 15:54:21 +0530
+Processing by ActiveAdmin::Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/e6yW2zW4v/PqwqYd55b9cGOtRFaG4tMfwoEsbe6jHUy6DsD+t8UHSHSAZy7clEv2g3YhVh11Q/2cTJe5ClvHg=="}
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-08-27 15:54:21 +0530
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2015-08-27 15:54:21 +0530
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/devise/shared/_links.erb (0.3ms)
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (9.4ms)
+Completed 200 OK in 78ms (Views: 76.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 15:54:24 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 87ms (Views: 85.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 15:54:30 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 97ms (Views: 96.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 15:54:31 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 85ms (Views: 84.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 15:54:34 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 79ms (Views: 78.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 15:54:34 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 82ms (Views: 81.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 15:54:35 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 92ms (Views: 91.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 15:54:36 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 84ms (Views: 83.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-08-27 15:54:38 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/gems/devise-3.5.1/app/views/devise/shared/_links.html.erb (0.7ms)
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/gems/devise-3.5.1/app/views/devise/sessions/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 88ms (Views: 87.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-08-27 15:54:45 +0530
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/gems/devise-3.5.1/app/views/devise/shared/_links.html.erb (0.7ms)
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/gems/devise-3.5.1/app/views/devise/registrations/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 96ms (Views: 95.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/twitter" for 127.0.0.1 at 2015-08-27 15:54:51 +0530
+** [Airbrake] Notice was not sent due to configuration:         
+  Environment Monitored? false         
+  API key set? false
+
+OAuth::Unauthorized - 401 Authorization Required:
+  oauth (0.4.7) lib/oauth/consumer.rb:216:in `token_request'
+  oauth (0.4.7) lib/oauth/consumer.rb:136:in `get_request_token'
+  omniauth-oauth (1.1.0) lib/omniauth/strategies/oauth.rb:28:in `request_phase'
+  omniauth-twitter (1.2.0) lib/omniauth/strategies/twitter.rb:60:in `request_phase'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:215:in `request_call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:183:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.3) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.3) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.3) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:84:in `run_callbacks'
+  actionpack (4.2.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  airbrake (4.3.0) lib/airbrake/rails/middleware.rb:13:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  airbrake (4.3.0) lib/airbrake/user_informer.rb:16:in `_call'
+  airbrake (4.3.0) lib/airbrake/user_informer.rb:12:in `call'
+  railties (4.2.3) lib/rails/engine.rb:518:in `call'
+  railties (4.2.3) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  thin (1.6.3) lib/thin/connection.rb:86:in `block in pre_process'
+  thin (1.6.3) lib/thin/connection.rb:84:in `catch'
+  thin (1.6.3) lib/thin/connection.rb:84:in `pre_process'
+  thin (1.6.3) lib/thin/connection.rb:53:in `process'
+  thin (1.6.3) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.7) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.7) lib/eventmachine.rb:187:in `run'
+  thin (1.6.3) lib/thin/backends/base.rb:73:in `start'
+  thin (1.6.3) lib/thin/server.rb:162:in `start'
+  rack (1.6.4) lib/rack/handler/thin.rb:19:in `run'
+  rack (1.6.4) lib/rack/server.rb:286:in `start'
+  railties (4.2.3) lib/rails/commands/server.rb:80:in `start'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:80:in `block in server'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:75:in `tap'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:75:in `server'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+  railties (4.2.3) lib/rails/commands.rb:17:in `<top (required)>'
+  bin/rails:4:in `require'
+  bin/rails:4:in `<main>'
+
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 15:55:08 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 85ms (Views: 84.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-08-27 15:56:48 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/gems/devise-3.5.1/app/views/devise/shared/_links.html.erb (0.7ms)
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/gems/devise-3.5.1/app/views/devise/sessions/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 100ms (Views: 99.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 16:02:01 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 85ms (Views: 84.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 16:09:37 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 86ms (Views: 85.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 16:09:45 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 89ms (Views: 88.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 16:10:00 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 84ms (Views: 83.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-08-27 16:10:02 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/gems/devise-3.5.1/app/views/devise/shared/_links.html.erb (0.6ms)
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/gems/devise-3.5.1/app/views/devise/sessions/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 99ms (Views: 98.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/" for 127.0.0.1 at 2015-08-27 16:10:22 +0530
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2015-08-27 16:10:22 +0530
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/devise/shared/_links.erb (0.2ms)
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (9.1ms)
+Completed 200 OK in 88ms (Views: 86.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/login" for 127.0.0.1 at 2015-08-27 16:10:45 +0530
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Y3Dt+YxToXpaCsOxcrZgIdNEjGP/4pw96QnxUY7wts1J0OVT+/VXyqby31V+6SHXS7D6mE+jFFdtmvbSPCapPQ==", "admin_user"=>{"email"=>"admin@cbs.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["email", "admin@cbs.com"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "admin_users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "admin_users"."id" = $4[0m  [["current_sign_in_at", "2015-08-27 10:40:45.823604"], ["sign_in_count", 2], ["updated_at", "2015-08-27 10:40:45.824430"], ["id", 1]]
+  [1m[35m (8.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 69ms (ActiveRecord: 9.2ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-08-27 16:10:45 +0530
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.1ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/page/index.html.arb (65.5ms)
+Completed 200 OK in 68ms (Views: 66.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2015-08-27 16:10:53 +0530
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[35mAdminUser Load (0.4ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "admin_users"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users"  ORDER BY "admin_users"."id" desc LIMIT 30 OFFSET 0[0m
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (88.9ms)
+Completed 200 OK in 100ms (Views: 94.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/admin/comments" for 127.0.0.1 at 2015-08-27 16:10:59 +0530
+Processing by Admin::CommentsController#index as HTML
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1[0m  [["namespace", "admin"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1 LIMIT 30 OFFSET 0) subquery_for_count  [["namespace", "admin"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT DISTINCT "active_admin_comments"."resource_type" FROM "active_admin_comments"  ORDER BY resource_type asc[0m
+  [1m[35m (0.1ms)[0m  SELECT DISTINCT "active_admin_comments"."author_type" FROM "active_admin_comments"  ORDER BY author_type asc
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (80.1ms)
+Completed 200 OK in 84ms (Views: 80.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2015-08-27 16:11:00 +0530
+Processing by Admin::UsersController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mAuthorization Load (0.2ms)[0m  [1mSELECT "authorizations".* FROM "authorizations"[0m
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (100.3ms)
+Completed 200 OK in 104ms (Views: 101.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/admin/logout" for 127.0.0.1 at 2015-08-27 16:11:10 +0530
+Processing by ActiveAdmin::Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Xaz9utr+x+bD6VxapNfO9NvC8UNfY8W/ftinHC7fbjsdn4evCtuF6hjQeUwLJ3Zpri8Cc8LpiQzSfn4VFrJQ1g=="}
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-08-27 16:11:10 +0530
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2015-08-27 16:11:10 +0530
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/devise/shared/_links.erb (0.2ms)
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (9.3ms)
+Completed 200 OK in 76ms (Views: 74.5ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/social-login-in-rails/app/models/user.rb:8)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/social-login-in-rails/app/models/user.rb:8)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/social-login-in-rails/app/models/user.rb:8)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/social-login-in-rails/app/models/user.rb:8)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2015-08-27 16:25:50 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/devise/shared/_links.erb (0.9ms)
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (21.4ms)
+Completed 200 OK in 289ms (Views: 263.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 16:25:55 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 90ms (Views: 89.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 16:26:42 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 76ms (Views: 75.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 16:26:44 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 80ms (Views: 79.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 16:27:31 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 86ms (Views: 85.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 16:27:33 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 84ms (Views: 83.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 16:27:40 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 78ms (Views: 77.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 16:28:45 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 87ms (Views: 86.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 16:29:30 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 90ms (Views: 89.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 16:29:35 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 98ms (Views: 97.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-08-27 16:29:36 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/gems/devise-3.5.1/app/views/devise/shared/_links.html.erb (1.2ms)
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/gems/devise-3.5.1/app/views/devise/sessions/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 95ms (Views: 85.7ms | ActiveRecord: 0.7ms)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/agrowbase/app/models/user.rb:8)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/agrowbase/app/models/user.rb:8)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 16:43:51 +0530
+** [Airbrake] Notice was not sent due to configuration:         
+  Environment Monitored? false         
+  API key set? false
+
+ActiveRecord::PendingMigrationError - 
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+:
+  activerecord (4.2.3) lib/active_record/migration.rb:392:in `check_pending!'
+  activerecord (4.2.3) lib/active_record/migration.rb:373:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.3) lib/active_support/callbacks.rb:84:in `run_callbacks'
+  actionpack (4.2.3) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  airbrake (4.3.0) lib/airbrake/rails/middleware.rb:13:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.3) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.3) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.3) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.3) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.3) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  airbrake (4.3.0) lib/airbrake/user_informer.rb:16:in `_call'
+  airbrake (4.3.0) lib/airbrake/user_informer.rb:12:in `call'
+  railties (4.2.3) lib/rails/engine.rb:518:in `call'
+  railties (4.2.3) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  thin (1.6.3) lib/thin/connection.rb:86:in `block in pre_process'
+  thin (1.6.3) lib/thin/connection.rb:84:in `catch'
+  thin (1.6.3) lib/thin/connection.rb:84:in `pre_process'
+  thin (1.6.3) lib/thin/connection.rb:53:in `process'
+  thin (1.6.3) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.7) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.7) lib/eventmachine.rb:187:in `run'
+  thin (1.6.3) lib/thin/backends/base.rb:73:in `start'
+  thin (1.6.3) lib/thin/server.rb:162:in `start'
+  rack (1.6.4) lib/rack/handler/thin.rb:19:in `run'
+  rack (1.6.4) lib/rack/server.rb:286:in `start'
+  railties (4.2.3) lib/rails/commands/server.rb:80:in `start'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:80:in `block in server'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:75:in `tap'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:75:in `server'
+  railties (4.2.3) lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+  railties (4.2.3) lib/rails/commands.rb:17:in `<top (required)>'
+  bin/rails:4:in `require'
+  bin/rails:4:in `<main>'
+
+
+
+Started POST "/__better_errors/937a636a9d297393/variables" for 127.0.0.1 at 2015-08-27 16:43:51 +0530
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/agrowbase/app/models/user.rb:8)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/agrowbase/app/models/user.rb:8)
+  [1m[36m (625.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (36.9ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (35.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20130714124350)
+  [1m[35m (0.1ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /var/www/agrowbase/db/migrate/20130714124350_create_users.rb:7)
+  [1m[36m (313.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "about" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130714124350"]]
+  [1m[36m (47.9ms)[0m  [1mCOMMIT[0m
+Migrating to AddDeviseToUsers (20130714124402)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (100.0ms)[0m  [1mALTER TABLE "users" ADD "email" character varying DEFAULT ''[0m
+  [1m[35m (123.8ms)[0m  ALTER TABLE "users" ADD "encrypted_password" character varying DEFAULT '' NOT NULL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "reset_password_token" character varying[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "reset_password_sent_at" timestamp
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "remember_created_at" timestamp[0m
+  [1m[35m (124.4ms)[0m  ALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "current_sign_in_at" timestamp[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "last_sign_in_at" timestamp
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" ADD "current_sign_in_ip" character varying[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "users" ADD "last_sign_in_ip" character varying
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" ADD "confirmation_token" character varying[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "users" ADD "confirmed_at" timestamp
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" ADD "confirmation_sent_at" timestamp[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "users" ADD "unconfirmed_email" character varying
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" ADD "authentication_token" character varying[0m
+  [1m[35m (55.1ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")
+  [1m[36m (24.3ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (66.0ms)[0m  CREATE UNIQUE INDEX  "index_users_on_confirmation_token" ON "users"  ("confirmation_token")
+  [1m[36m (69.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_authentication_token" ON "users"  ("authentication_token")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130714124402"]]
+  [1m[36m (55.1ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAuthorizations (20130714145508)
+  [1m[35m (0.2ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /var/www/agrowbase/db/migrate/20130714145508_create_authorizations.rb:10)
+  [1m[36m (226.9ms)[0m  [1mCREATE TABLE "authorizations" ("id" serial primary key, "provider" character varying, "uid" character varying, "user_id" integer, "token" character varying, "secret" character varying, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130714145508"]]
+  [1m[36m (12.0ms)[0m  [1mCOMMIT[0m
+Migrating to AddImageToUser (20130714201233)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "image" character varying[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130714201233"]]
+  [1m[36m (9.7ms)[0m  [1mCOMMIT[0m
+Migrating to AddUsernameToAuthorization (20130714204601)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "authorizations" ADD "username" character varying[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130714204601"]]
+  [1m[36m (10.4ms)[0m  [1mCOMMIT[0m
+Migrating to AddLocationToUsers (20130714210222)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "location" character varying[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130714210222"]]
+  [1m[36m (44.3ms)[0m  [1mCOMMIT[0m
+Migrating to AddUsernameToUsers (20130714212638)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "username" character varying[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130714212638"]]
+  [1m[36m (43.3ms)[0m  [1mCOMMIT[0m
+Migrating to DeviseCreateAdminUsers (20131108204716)
+  [1m[35m (0.1ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /var/www/agrowbase/db/migrate/20131108204716_devise_create_admin_users.rb:43)
+  [1m[36m (149.3ms)[0m  [1mCREATE TABLE "admin_users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (99.3ms)[0m  CREATE UNIQUE INDEX  "index_admin_users_on_email" ON "admin_users"  ("email")
+  [1m[36m (57.7ms)[0m  [1mCREATE UNIQUE INDEX  "index_admin_users_on_reset_password_token" ON "admin_users"  ("reset_password_token")[0m
+  [1m[35mAdminUser Exists (22.2ms)[0m  SELECT  1 AS one FROM "admin_users" WHERE "admin_users"."email" = 'admin@example.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "admin_users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "admin@example.com"], ["encrypted_password", "$2a$10$Ie.cn5HgSVUTu.wFFD4DUejvDLOsXSUXOkIpBquIju7JUTYuzUDmi"], ["created_at", "2015-08-27 11:14:14.592619"], ["updated_at", "2015-08-27 11:14:14.592619"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20131108204716"]]
+  [1m[36m (45.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAdminNotes (20131108204722)
+  [1m[35m (0.1ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in up at /var/www/agrowbase/db/migrate/20131108204722_create_admin_notes.rb:8)
+  [1m[36m (124.7ms)[0m  [1mCREATE TABLE "admin_notes" ("id" serial primary key, "resource_id" character varying NOT NULL, "resource_type" character varying NOT NULL, "admin_user_id" integer, "admin_user_type" character varying, "body" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (57.6ms)[0m  CREATE  INDEX  "index_admin_notes_on_resource_type_and_resource_id" ON "admin_notes"  ("resource_type", "resource_id")
+  [1m[36m (93.1ms)[0m  [1mCREATE  INDEX  "index_admin_notes_on_admin_user_type_and_admin_user_id" ON "admin_notes"  ("admin_user_type", "admin_user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20131108204722"]]
+  [1m[36m (45.7ms)[0m  [1mCOMMIT[0m
+Migrating to MoveAdminNotesToComments (20131108204723)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (87.6ms)[0m  [1mDROP INDEX "index_admin_notes_on_admin_user_type_and_admin_user_id"[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "admin_notes" RENAME TO "active_admin_comments"
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "public"."admin_notes_id_seq" RENAME TO "active_admin_comments_id_seq"[0m
+  [1m[35m (0.2ms)[0m  ALTER INDEX "admin_notes_pkey" RENAME TO "active_admin_comments_pkey"
+  [1m[36m (0.2ms)[0m  [1mALTER INDEX "index_admin_notes_on_resource_type_and_resource_id" RENAME TO "index_active_admin_comments_on_resource_type_and_resource_id"[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "active_admin_comments" RENAME COLUMN "admin_user_type" TO "author_type"
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "active_admin_comments" RENAME COLUMN "admin_user_id" TO "author_id"[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "active_admin_comments" ADD "namespace" character varying
+  [1m[36m (83.6ms)[0m  [1mCREATE  INDEX  "index_active_admin_comments_on_namespace" ON "active_admin_comments"  ("namespace")[0m
+  [1m[35m (145.9ms)[0m  CREATE  INDEX  "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments"  ("author_type", "author_id")
+  [1m[36m (0.2ms)[0m  [1mUPDATE active_admin_comments SET namespace='admin'[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20131108204723"]]
+  [1m[36m (61.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.3ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'active_admin_comments'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.2ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'admin_users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.1ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'authorizations'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.2ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/agrowbase/app/models/user.rb:8)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/agrowbase/app/models/user.rb:8)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 16:44:23 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 2026ms (Views: 2014.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-27 16:44:29 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 72ms (Views: 71.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-08-27 16:44:31 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/gems/devise-3.5.1/app/views/devise/shared/_links.html.erb (1.5ms)
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/gems/devise-3.5.1/app/views/devise/sessions/new.html.erb within layouts/application (47.1ms)
+Completed 200 OK in 148ms (Views: 135.6ms | ActiveRecord: 1.4ms)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/agrowbase/app/models/user.rb:8)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/agrowbase/app/models/user.rb:8)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-08-27 16:46:14 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/gems/devise-3.5.1/app/views/devise/shared/_links.html.erb (1.4ms)
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/gems/devise-3.5.1/app/views/devise/sessions/new.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 314ms (Views: 285.0ms | ActiveRecord: 1.5ms)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/agrowbase/app/models/user.rb:8)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/agrowbase/app/models/user.rb:8)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/agrowbase/app/models/user.rb:8)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:User> at /var/www/agrowbase/app/models/user.rb:8)
+
+
+Started GET "/" for 127.0.0.1 at 2015-09-04 12:15:43 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (80.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 713ms (Views: 667.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/" for 127.0.0.1 at 2015-09-04 12:21:26 +0530
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2015-09-04 12:21:26 +0530
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/devise/shared/_links.erb (0.8ms)
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (140.2ms)
+Completed 200 OK in 554ms (Views: 487.2ms | ActiveRecord: 26.5ms)
+
+
+Started POST "/admin/login" for 127.0.0.1 at 2015-09-04 12:21:39 +0530
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PHE6UmoRV/ErUIrcSDkXJod0DH5upFauEcoUEIM35on3Gxlt46fZIezE8RsMQaZAn6woiotw8I+oOzAAyQhsjQ==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[35mAdminUser Load (14.5ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["email", "admin@example.com"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (12.5ms)[0m  UPDATE "admin_users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "admin_users"."id" = $7  [["last_sign_in_at", "2015-09-04 06:51:39.989786"], ["current_sign_in_at", "2015-09-04 06:51:39.989786"], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-09-04 06:51:39.990451"], ["id", 1]]
+  [1m[36m (25.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 371ms (ActiveRecord: 53.2ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-09-04 12:21:40 +0530
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mAdminUser Load (0.1ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/page/index.html.arb (66.8ms)
+Completed 200 OK in 70ms (Views: 67.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/admin/admin_users" for 127.0.0.1 at 2015-09-04 12:21:43 +0530
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "admin_users"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT 30 OFFSET 0) subquery_for_count[0m
+  [1m[35mAdminUser Load (0.3ms)[0m  SELECT  "admin_users".* FROM "admin_users"  ORDER BY "admin_users"."id" desc LIMIT 30 OFFSET 0
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (143.9ms)
+Completed 200 OK in 160ms (Views: 144.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2015-09-04 12:21:44 +0530
+Processing by Admin::UsersController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "users" LIMIT 30 OFFSET 0) subquery_for_count
+  [1m[36mAuthorization Load (0.3ms)[0m  [1mSELECT "authorizations".* FROM "authorizations"[0m
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (127.9ms)
+Completed 200 OK in 133ms (Views: 128.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/admin/comments" for 127.0.0.1 at 2015-09-04 12:21:46 +0530
+Processing by Admin::CommentsController#index as HTML
+  [1m[35mAdminUser Load (0.2ms)[0m  SELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (12.7ms)[0m  [1mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1[0m  [["namespace", "admin"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1 LIMIT 30 OFFSET 0) subquery_for_count  [["namespace", "admin"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT DISTINCT "active_admin_comments"."resource_type" FROM "active_admin_comments"  ORDER BY resource_type asc[0m
+  [1m[35m (0.2ms)[0m  SELECT DISTINCT "active_admin_comments"."author_type" FROM "active_admin_comments"  ORDER BY author_type asc
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/resource/index.html.arb (98.0ms)
+Completed 200 OK in 104ms (Views: 86.4ms | ActiveRecord: 14.4ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-09-04 12:21:51 +0530
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.2ms)[0m  [1mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1  ORDER BY "admin_users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered /home/ourdesignz/.rvm/gems/ruby-2.2.1/bundler/gems/active_admin-5a2b7b5bc683/app/views/active_admin/page/index.html.arb (64.7ms)
+Completed 200 OK in 82ms (Views: 65.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-09-04 12:21:55 +0530
+Processing by PagesController#landing as HTML
+  Rendered pages/landing.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 102ms (Views: 101.0ms | ActiveRecord: 0.0ms)
